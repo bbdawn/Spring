@@ -7,7 +7,7 @@
 <!--
 	Spring Container가 base package 하위의 클래스들을 스캔해서 컴포넌트 계열 어노테이션이
 	명시된 클래스를 객체 생성해 bean으로 등록한다.
-	또한 DI 계열 어노테이션을 확인해 처리한다.  
+	또한 DI 계열 어노테이션을 확인해 처리한다.   
  -->
 <context:component-scan base-package="org.kosta.myproject"/>
 </beans>
