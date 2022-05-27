@@ -11,3 +11,4 @@ public class Spade implements Tool {
 		System.out.println("삽 도구로 일하다");
 	}
 }
+ 
