@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>step01-text-expression</title>
+</head>
+<body>
+<a href="/" th:href="@{/}">Home</a><br><br>
+<!--/* 
+			Controller가 공유한 MemberVO 정보를 화면에 표현
+			
+			VO의 getter Method를 호출  
+ */-->
+ <span th:text="${memberVO.address}">주소</span>에 사시는
+ <span th:text="${memberVO.name}">회원명</span>님
+ <!--/* 
+ 			Controller가 공유한 MemberVO에 다양한 방법으로 접근할 수 있다  
+  */-->
+  <br><br>
+  <span th:text="${memberVO.nextPageGroup}">다음페이지그룹</span>
+  <span th:text="${memberVO.isNextPageGroup()}">다음페이지그룹</span>
+  <span th:text="${memberVO.register()}">다음페이지그룹</span>
+</body>
+</html>
+
+
+
+
+
+
+
+
