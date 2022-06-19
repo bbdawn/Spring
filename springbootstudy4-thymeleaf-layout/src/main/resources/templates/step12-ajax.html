@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>step11-ajax</title>
+</head>
+<body>
+<div class="container pt-4">
+<!--/*  thymeleaf를 이용한 ajax 방식으로 상품리스트를 테이블로 제공   */-->
+<script type="text/javascript">
+	$(function(){
+		$("#listBtn").click(function(){
+			$.ajax({
+				type:"get",
+				url:"findAllProductList2", // 타임리프를 이용한 방식은 dataType : json 을 명시하지 않는다 => html 자체를 응답받음				
+				success:function(list){
+					$("#productTbody").replaceWith(list);//새로운 컨텐트로 교체 
+				}//success
+			});
+		});
+	});
+</script>
+<button id="listBtn">상품리스트</button>
+<br><br>
+<table class="table table-bordered">
+	<thead>
+		<tr>		
+			<th>NO</th>
+			<th>NAME</th>
+			<th>MAKER</th>
+			<th>PRICE</th>
+		</tr>
+	</thead>
+	 <tbody id="productTbody">
+	 <tr th:each="product:${productList}">
+	 <td th:text="${product.productNo}"></td>
+	 <td th:text="${product.name}"></td>
+	 <td th:text="${product.maker}"></td>
+	 <td th:text="${product.price}"></td>
+	 </tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
