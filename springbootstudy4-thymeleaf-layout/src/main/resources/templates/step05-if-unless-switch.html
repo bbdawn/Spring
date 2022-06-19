@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>if unless switch</title>
+</head>
+<body>
+<a href="/" th:href="@{/}">Home</a><br><br>
+<!--/* 
+		if , unless => if ~ else if 
+		th:block => th:if 의 조건이 true인 경우에 th:block 태그와 그 하위 태그가 실행 
+		
+		th:text 의 문자열 조합 : ' ' 으로 처리하거나 |   | 로 감싸주면 된다  
+ */-->
+ <th:block th:if="${product.price<2000}">
+ 	<div style="background-color: yellow" th:text="${product.name}+' '+${product.maker}">상품명 제조사명</div>
+ </th:block>
+  <th:block th:unless="${product.price<2000}">
+ 	<div style="background-color: lime" th:text="${product.name}+' '+${product.maker}">상품명 제조사명</div>
+ </th:block>
+ <br><br>
+ <th:block th:if="${product.maker!='하이트진로'}">
+ 	<div style="background-color: yellow" th:text="${product.name}+' '+${product.maker}">상품명 제조사명</div>
+ </th:block>
+  <th:block th:unless="${product.maker!='하이트진로'}">
+ 	<div style="background-color: lime" th:text="|상품명: ${product.name} 제조사: ${product.maker}|">상품명 제조사명</div>
+ </th:block>
+ <br><br>
+ <span th:if="${product.price}<2000" th:text="|${product.name} 가성비짱|">저렴한 상품 메세지</span>
+ <span th:unless="${product.price}<2000" th:text="${product.name}+ '비쌈'">비싼 상품 메세지</span>
+ <br><br>
+ <!--/* 
+ 		삼항연산자  (조건식) ? 식1 : 식2 
+ 		if ~ then :  (if) ? (then)
+ 		if ~ then ~ else : (if) ? (then) : (else) 
+  */-->
+  삼항연산자 테스트1 <span th:text="${product.price}<1500 ? ${product.name}"></span><br>
+  삼항연산자 테스트2 <span th:text="${product.gift}? |${product.name} 사은품증정|"></span><br>
+  삼항연산자 테스트3 <span th:text="${product.price}>2000 ? |비싼 상품|: |저렴한 상품|"></span><br>
+  <br><br>
+  thymeleaf switch case <br>
+  <th:block th:switch="${size}">
+  	<th:block th:case="L">
+  		<span>대</span>
+  	</th:block>
+  	<th:block th:case="M">
+  		<span>중</span>
+  	</th:block>
+  	<th:block th:case="S">
+  		<span>소</span>
+  	</th:block>
+  	<th:block th:case="*">
+  		<span>default</span>
+  	</th:block>
+  </th:block>  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
