@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>step04-session-param</title>
+</head>
+<body>
+<a href="index.html" th:href="@{/}">Home</a><br><br>
+<!--/* 
+		session 객체 정보를 제공 
+ */-->
+ <span th:text="${session.member.name}">회원명</span>님 
+ <span th:text="${session.member.address}">주소</span> 
+ <br><br>
+ <!--/* 
+			query string  src or href 에서 @ 을 이용해서 url 과 querystring(세션에 있는 정보를 이용) 생성하는 연습  		
+  */-->
+  <a href="/study4-test?id=spring&name=아이유" th:href="@{/study4-test(id=${session.member.id},name=${session.member.name})}">review querystring test</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
