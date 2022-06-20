@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.mapper.PointMapper">
+<select id="findPointById" parameterType="string"  resultType="org.kosta.myproject.vo.PointVO">
+	select id,point,point_type from point_tx where id=#{value}
+</select>
+<insert id="register" parameterType="org.kosta.myproject.vo.PointVO">
+	insert into point_tx(id,point,point_type) values(#{id},#{point},#{pointType})
+</insert>
+</mapper>
