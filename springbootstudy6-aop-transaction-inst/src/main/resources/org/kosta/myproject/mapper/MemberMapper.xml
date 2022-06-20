@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.mapper.MemberMapper">
+<select id="findMemberById" parameterType="string" resultType="org.kosta.myproject.vo.MemberVO">
+	select id,password,name,address from member_tx where id=#{value}
+</select>
+<select id="getTotalMemberCount" resultType="int">
+	select count(*) from member_tx
+</select>
+<insert id="register" parameterType="org.kosta.myproject.vo.MemberVO">
+	insert into member_tx(id,password,name,address) values(#{id},#{password},#{name},#{address})
+</insert>
+</mapper>
