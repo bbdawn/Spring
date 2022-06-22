@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.mapper.DepartmentMapper">
+<sql id="selectDepartment">
+	select department_no,department_name,location from springboot_department
+</sql>
+<select id="findDepartmentByNo" parameterType="int" resultType="org.kosta.myproject.vo.DepartmentVO">
+	<include refid="selectDepartment"/>
+	where department_no=#{value}
+</select>
+<select id="findDepartmentMapByNo" parameterType="int"  resultType="map">
+	<include refid="selectDepartment"/>
+	where department_no=#{value}
+</select>
+<select id="findAllDepartmentList" resultType="org.kosta.myproject.vo.DepartmentVO">
+	<include refid="selectDepartment"/>
+</select>
+</mapper>
+
+
+
+
+
