@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.mapper.EmployeeMapper">
+	<resultMap type="org.kosta.myproject.vo.EmployeeVO" 	id="employeeResultMap">
+		<result column="department_no" 	property="departmentVO.departmentNo" />
+		<result column="department_name" property="departmentVO.departmentName" />
+		<result column="location" property="departmentVO.location" />
+	</resultMap>
+	<select id="findEmployeeByNo" parameterType="int"
+		resultMap="employeeResultMap">
+		select e.employee_no,e.name,e.salary,d.department_no,d.department_name,d.location
+		from springboot_employee e
+		inner join springboot_department d on e.department_no=d.department_no
+		where e.employee_no=#{value}
+	</select>
+	<select id="findEmployeeListDynamicSql" parameterType="org.kosta.myproject.vo.EmployeeVO" 
+	resultMap="employeeResultMap">
+	    select e.employee_no,e.name,e.salary,d.department_no,d.department_name,d.location
+		from springboot_employee e
+		inner join springboot_department d on e.department_no=d.department_no	
+		<where>
+			<if test="departmentVO!=null and departmentVO.departmentNo!=0">
+				e.department_no=#{departmentVO.departmentNo}
+			</if>
+			<if test="name!=null and name!=''">
+				and name like '%' || #{name} || '%'
+			</if>
+		</where>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
