@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>simple-rest</title>
+</head>
+<body>
+<div class="container pt-4">
+<!--/*  rest test : http request method get (조회)  post(생성) put(수정) delete(삭제)    */-->
+<button id="getBtn">get test</button>
+<button id="postBtn">post test</button>
+<button id="putBtn">put test</button>
+<button id="deleteBtn">delete test</button>
+<script type="text/javascript">
+	$(function(){
+		$("#getBtn").click(function() {
+			//alert("get");
+			$.ajax({
+				type:"get",
+				url:"item/1",
+				success:function(data){
+					alert(data);
+				}
+			});//ajax
+		});//getBtn
+		$("#postBtn").click(function() {			
+			$.ajax({
+				type:"post",
+				url:"item",
+				data:"id=2",
+				success:function(result){//result 서버가 응답하는 정보 
+					alert(result);
+				}
+			});//ajax
+		});//postBtn
+		$("#putBtn").click(function() {			
+			$.ajax({
+				type:"put",
+				url:"item",
+				data:"id=3",
+				success:function(result){//result 서버가 응답하는 정보 
+					alert(result);
+				}
+			});//ajax
+		});//putBtn
+		$("#deleteBtn").click(function() {			
+			$.ajax({
+				type:"delete",
+				url:"item",
+				data:"id=3",
+				success:function(result){//result 서버가 응답하는 정보 
+					alert(result);
+				}
+			});//ajax
+		});//putBtn
+	});
+</script>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
