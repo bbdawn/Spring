@@ -1,0 +1,29 @@
+REST(REpresentational State Transfer) : 
+분산 환경에서 시스템 간의 통신을 위한 소프트웨어 아키텍쳐 
+
+분산 환경에서 다양한 시스템 간의 통신을 위해 자원에 식별자 부여하고 
+자원정보를 표준화된 HTTP Method로 제어하는 소프트웨어 아키텍쳐  
+
+특징 
+1. 자원정보를 고유한 URI(통합자원식별자:Uniform Resource Identifier)를 부여해 활용 
+HTTP GET(조회) , POST(생성) , PUT(수정), DELELTE(삭제) Method를 통해 제어
+ex ) http://news.daum.net/v/1004
+
+2. "다양한 클라이언트"에게 서비스를 제공, 클라이언트와 서버 역할의 명확한 분리가 가능.  
+-> 모바일 , 태블릿, PC , TV 등과 같은 다양한 디바이스에 대한 서비스 및  다른 시스템과의 통신을 위해 사용된다 
+
+REST API : 
+REST 기반 서비스 API 
+어플리케이션 간의 데이터 통신을 위한 어플리케이션 프로그래밍 인터페이스
+
+RESTful : REST API 제공하는 웹서비스 시스템을 지칭 , "A 서비스 시스템은 'RESTful' 하다"
+
+Spring Rest Annotation 
+@RestController : @Controller + @ResponseBody
+
+
+
+
+
+
+
