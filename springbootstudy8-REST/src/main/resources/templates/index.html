@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>REST</title>
+<style type="text/css">
+	.restImg{
+		width: 600px;
+		height: 400px		
+	}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>REST  적용 웹어플리케이션 구현 예제 </h3>
+	<a href="simple-rest" th:href="@{/simple-rest}">simple rest test</a>
+   <ul> 
+   	<li>
+   	HTTP Request Method <br><br>
+   	GET : 리스트 조회 <input type="button" value="testGetListBtn" id="testGetListBtn"><br>
+   	<div id="listView"></div> 	<br> <br>
+   	GET : 조회 <input type="button" value="testGetBtn" id="testGetBtn"><input type="number" id="pid"><br><br> 
+	POST :생성 <input type="button" value="testCreateBtn" id="testCreateBtn"><br>
+	<form id="createProductForm">
+		상품명 <input type="text" name="name" size="5"> 제조사 <input type="text" name="maker" size="5"> 가격 <input type="number" name="price">
+	</form>
+	<br><br>	
+	PUT : 수정 <input type="button" value="testPutBtn" id="testPutBtn"><br>
+		<form id="updateProductForm">
+		상품번호 <input type="number" name="id" size="3" id="updateId"> 
+		상품명 <input type="text" name="name" size="5"> 제조사 <input type="text" name="maker" size="5"> 가격 <input type="number" name="price">
+	</form>
+	<br>
+	DELETE : 삭제 <input type="button" value="testDeleteBtn" id="testDeleteBtn">
+	<input type="number" id="deleteId">
+   	</li>  
+   </ul>   
+   <img class="restImg" src="images/rest-api.png">
+   <script type="text/javascript">
+	 $(function(){
+		 // 공통적으로 사용될 Ajax 통신에 대한 기본속성을 정의해 사용할 수 있다 
+		 $.ajaxSetup({
+			 success:function(data){
+				 alert(data);
+			 },
+			 error:function(xhr,status,error){
+				 console.log(xhr);
+				 if(xhr.status==404)
+					 alert("정보가 존재하지 않아 서비스 불가");
+			 }
+		 });//ajaxSetup
+		 $("#testGetListBtn").click(function() {
+			 $("#listView").empty();
+			 $.ajax({
+					type:"get",
+					url:"product",
+					success:function(productList){ // success를 정의하지 않으면 ajaxSetup의 success가 실행되고 정의하면 자신의 success가 실행된다 
+						//javascript for loop 를 jquery each 로 처리할 수 있다 
+						$.each(productList,function(i,product){// i 는 0부터 시작하는 인덱스 
+							$("#listView")
+							.append(product.id+" "+product.name+" "+product.maker+" "+product.price+"<br>")
+							.css("color","blue");							
+						});//each
+					}
+				});//ajax
+		 });//testGetListBtn
+		 $("#testGetBtn").click(function() {
+		 	let pid=$("#pid").val();
+		 	if(pid==""){
+		 		alert("상품아이디를 입력하세요!");
+		 		return;
+		 	}
+		 	$.ajax({
+		 		type:"get",
+		 		url:"product/"+pid,
+		 		success:function(data){
+		 			alert(data.id+" "+data.name+" "+data.maker+" "+data.price);
+		 		}
+		 	});
+		 });//testGetBtn
+		 $("#testCreateBtn").click(function() {			 	
+			 	$.ajax({
+			 		type:"post",
+			 		url:"product",
+			 		data:$("#createProductForm").serialize()
+			 	}).always(function() { // always : ajax 통신 후 수행될 작업을 명시 ( java finally와 유사 )
+			 		$("#createProductForm")[0].reset();
+			 	});
+			});//testCreateBtn
+			$("#testPutBtn").click(function() {			 	
+			 	$.ajax({
+			 		type:"put",
+			 		url:"product",
+			 		data:$("#updateProductForm").serialize()
+			 	}).always(function() { // always : ajax 통신 후 수행될 작업을 명시 ( java finally와 유사 )
+			 		$("#updateProductForm")[0].reset();
+			 	});
+			});//testPutBtn
+			$("#testDeleteBtn").click(function() {			 	
+			 	$.ajax({
+			 		type:"delete",
+			 		url:"product",
+			 		data:"id="+$("#deleteId").val(),
+			 		success:function(result){
+			 			alert(result);
+			 			// 삭제 성공시 후속 작업으로 리스트를 갱신하게 한다 ( jquery trigger를 이용 )
+			 			$("#testGetListBtn").trigger("click");// 리스트 버튼 클릭 이벤트를 발생시킨다 
+			 		}
+			 	}).always(function() { // always : ajax 통신 후 수행될 작업을 명시 ( java finally와 유사 )
+			 		$("#deleteId").val("");
+			 	});
+			});//testDeleteBtn
+	 });//ready
+    </script>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
