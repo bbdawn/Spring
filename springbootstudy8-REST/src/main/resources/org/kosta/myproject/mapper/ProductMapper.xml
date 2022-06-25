@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.mapper.ProductMapper">
+	<sql id="selectProduct">
+		select id,name,maker,price from rest_product
+	</sql>
+	<select id="getAllProductList"  resultType="org.kosta.myproject.vo.ProductVO">
+ 		<include refid="selectProduct"></include>
+ 		order by id desc
+ 	</select>
+ 	<select id="findProductById"  resultType="org.kosta.myproject.vo.ProductVO" >
+ 		<include refid="selectProduct"></include>
+ 		where id=#{value}
+ 	</select>
+ 	<insert id="registerProduct" parameterType="org.kosta.myproject.vo.ProductVO">
+ 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+ 			select rest_product_seq.nextval from dual
+ 		</selectKey>
+ 		insert into rest_product(id,name,maker,price)
+		values(#{id},#{name},#{maker},#{price})
+ 	</insert>
+ 	<delete id="deleteProduct" parameterType="string">
+ 		delete from rest_product where id=#{value}
+ 	</delete>
+ 	<update id="updateProduct" parameterType="org.kosta.myproject.vo.ProductVO">
+ 		update rest_product set name=#{name},maker=#{maker},price=#{price} 
+ 		where id=#{id}
+ 	</update>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
