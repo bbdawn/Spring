@@ -1,0 +1,36 @@
+12:40 DEBUG o.k.m.model.LoggingDemoService - debug
+12:40 INFO  o.k.m.model.LoggingDemoService - info
+12:40 WARN  o.k.m.model.LoggingDemoService - warn
+12:40 ERROR o.k.m.model.LoggingDemoService - error
+12:41 ERROR o.k.m.model.LoggingDemoService - error
+12:41 DEBUG o.k.m.model.LoggingDemoService - debug
+12:41 INFO  o.k.m.model.LoggingDemoService - info
+12:41 WARN  o.k.m.model.LoggingDemoService - warn
+12:41 ERROR o.k.m.model.LoggingDemoService - error
+14:01 WARN  o.k.m.model.LoggingDemoService - warn
+14:01 ERROR o.k.m.model.LoggingDemoService - error
+14:01 DEBUG o.k.m.model.LoggingDemoService - debug
+14:01 INFO  o.k.m.model.LoggingDemoService - info
+14:07 WARN  o.k.m.model.LoggingDemoService - warn
+14:07 ERROR o.k.m.model.LoggingDemoService - error
+14:07 DEBUG o.k.m.model.LoggingDemoService - debug
+14:07 INFO  o.k.m.model.LoggingDemoService - info
+14:07 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴 message2 김밥
+14:09 WARN  o.k.m.model.LoggingDemoService - warn
+14:09 ERROR o.k.m.model.LoggingDemoService - error
+14:09 DEBUG o.k.m.model.LoggingDemoService - debug
+14:09 INFO  o.k.m.model.LoggingDemoService - info
+14:09 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴 message2 김밥
+14:09 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴2 message2 피자
+14:11 WARN  o.k.m.model.LoggingDemoService - warn
+14:11 ERROR o.k.m.model.LoggingDemoService - error
+14:11 DEBUG o.k.m.model.LoggingDemoService - debug
+14:11 INFO  o.k.m.model.LoggingDemoService - info
+14:11 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴 message2 김밥
+14:11 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴2 message2 피자
+14:12 WARN  o.k.m.model.LoggingDemoService - warn
+14:12 ERROR o.k.m.model.LoggingDemoService - error
+14:12 DEBUG o.k.m.model.LoggingDemoService - debug
+14:12 INFO  o.k.m.model.LoggingDemoService - info
+14:12 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴 message2 김밥
+14:12 INFO  o.k.m.model.LoggingDemoService - info log test message1 메뉴2 message2 피자
